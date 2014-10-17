@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="wsUrl">https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx</string>
+	<string name="app_name">ServicelinkASAP.Android</string>
+</resources>
+

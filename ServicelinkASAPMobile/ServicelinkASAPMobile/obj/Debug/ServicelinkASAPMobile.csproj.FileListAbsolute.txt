@@ -1,0 +1,9 @@
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\ServicelinkASAPMobile.dll.config
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\ServicelinkASAPMobile.dll
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\ServicelinkASAPMobile.pdb
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\Mono.Data.Sqlite.dll
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\Newtonsoft.Json.dll
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\bin\Debug\Newtonsoft.Json.xml
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\obj\Debug\ServicelinkASAPMobile.dll
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\obj\Debug\ServicelinkASAPMobile.pdb
+C:\Dev_Production\Dev\Mobile\ServicelinkASAPMobile\ServicelinkASAPMobile\obj\Debug\ServicelinkASAPMobile.csprojResolveAssemblyReference.cache

@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ServicelinkASAP.Android/MainActivity.cs">
+    <Files>
+      <File FileName="ServicelinkASAP.Android/Resources/values/styles.xml" Line="1" Column="1" />
+      <File FileName="ServicelinkASAP.Android/MainActivity.cs" Line="14" Column="14" />
+      <File FileName="ServicelinkASAP.Android/Fragments/PostingDetailFragment.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ServicelinkASAP.Android MonoForAntroid.PreferredDevice="7&quot; WSVGA (Tablet)" />
+</Properties>

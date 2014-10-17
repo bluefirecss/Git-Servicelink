@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:padding="5dp"
+    android:scrollbars="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow1">
+                <TextView
+                    android:text="Order ID:"
+                    android:layout_column="0"
+                    android:id="@+id/textView10"
+                    style="@style/leftCol_text_XLarge" />
+                <TextView
+                    android:text="4441231"
+                    android:layout_column="1"
+                    android:id="@+id/txtOrderID_P"
+                    style="@style/rightCol_text_XLarge" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow2">
+                <TextView
+                    android:text="TS#:"
+                    android:layout_column="0"
+                    android:id="@+id/textView10"
+                    style="@style/leftCol_text_XLarge" />
+                <TextView
+                    android:text="1234567CA"
+                    android:layout_column="1"
+                    android:id="@+id/txtTSNum_P"
+                    style="@style/rightCol_text_XLarge" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3">
+                <TextView
+                    android:text="APN:"
+                    android:layout_column="0"
+                    android:id="@+id/textView10"
+                    style="@style/leftCol_text_XLarge" />
+                <TextView
+                    android:text="10023345"
+                    android:layout_column="1"
+                    android:id="@+id/txtAPN_P"
+                    style="@style/rightCol_text_XLarge" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3">
+                <TextView
+                    android:text="PostOn:"
+                    android:layout_column="0"
+                    android:id="@+id/textView10"
+                    style="@style/leftCol_text_XLarge" />
+                <TextView
+                    android:text="2014-12-20"
+                    android:layout_column="1"
+                    android:id="@+id/txtPostOn"
+                    style="@style/rightCol_text_XLarge" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3">
+                <TextView
+                    android:text="Address:"
+                    android:layout_column="0"
+                    android:id="@+id/textView10"
+                    style="@style/leftCol_text_XLarge"
+                    android:layout_marginTop="1dp" />
+                <Button
+                    android:text="3210 El Camino Real, IRVINE, CA 92602"
+                    android:layout_column="1"
+                    android:id="@+id/btnAddress_P"
+                    style="@style/buttonText_XLarge" />
+            </TableRow>
+        </TableLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:id="@+id/view1"
+            android:background="#ffc1c1c1"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp" />
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow1">
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="0"
+                    android:id="@+id/tableRow6">
+                    <TextView
+                        android:text="Post Location"
+                        android:id="@+id/textView16"
+                        style="@style/tableHeaderLeft_XLarge" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="1"
+                    android:id="@+id/tableRow7">
+                    <TextView
+                        android:text="Occupancy"
+                        android:id="@+id/textView17"
+                        style="@style/tableHeaderRight_XLarge" />
+                </TableRow>
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow2">
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="0"
+                    android:id="@+id/tableRow4">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/radioGroup1"
+                        android:gravity="left">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Front Door"
+                            android:id="@+id/rdbFront"
+                            style="@style/radioButton_XLarge" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Gate"
+                            android:id="@+id/rdbGate"
+                            style="@style/radioButton_XLarge" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Other"
+                            android:id="@+id/rdbOther"
+                            style="@style/radioButton_XLarge" />
+                    </RadioGroup>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="1"
+                    android:id="@+id/tableRow5">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/radioGroup2">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Occupied"
+                            android:id="@+id/rdbOccupied"
+                            style="@style/radioButton_XLarge" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Unoccupied"
+                            android:id="@+id/rdbUnoccupied"
+                            style="@style/radioButton_XLarge" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Unknown"
+                            android:id="@+id/rdbUnknown"
+                            style="@style/radioButton_XLarge" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:text="Vacant Land"
+                            android:id="@+id/rdbVacant"
+                            style="@style/radioButton_XLarge" />
+                    </RadioGroup>
+                </TableRow>
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3">
+                <TextView
+                    android:text="Property Type"
+                    android:layout_column="0"
+                    android:id="@+id/textView20"
+                    style="@style/tableHeaderLeft_XLarge"
+                    android:layout_width="130dp" />
+                <TextView
+                    android:text="Miscellaneous"
+                    android:layout_column="1"
+                    android:id="@+id/textView20"
+                    style="@style/tableHeaderRight_XLarge"
+                    android:layout_width="170dp" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3">
+                <RadioGroup
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="0"
+                    android:id="@+id/radioGroup3">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:text="Residential"
+                        android:id="@+id/rdbResidential"
+                        style="@style/radioButton_XLarge" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:text="Commercial"
+                        android:id="@+id/rdbCommercial"
+                        style="@style/radioButton_XLarge" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:text="Rural"
+                        android:id="@+id/rdbRural"
+                        style="@style/radioButton_XLarge" />
+                </RadioGroup>
+                <TableLayout
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_column="1"
+                    android:id="@+id/tableLayout2">
+                    <TableRow
+                        android:id="@+id/tableRow9">
+                        <CheckBox
+                            android:text="NTR"
+                            android:layout_column="0"
+                            android:id="@+id/chkNTR"
+                            style="@style/radioButtonSmall_XLarge"
+                            android:layout_marginTop="7dp" />
+                        <TableLayout
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_column="1"
+                            android:id="@+id/tableLayout5">
+                            <TableRow
+                                android:id="@+id/tableRow14">
+                                <RadioButton
+                                    android:text="NOS"
+                                    android:layout_column="0"
+                                    android:id="@+id/rdbNOS"
+                                    style="@style/radioButtonSmall_XLarge"
+                                    android:layout_marginTop="7dp" />
+                                <RadioButton
+                                    android:text="NOD"
+                                    android:layout_column="1"
+                                    android:id="@+id/rdbNOD"
+                                    style="@style/radioButtonSmall_XLarge"
+                                    android:layout_marginTop="7dp" />
+                            </TableRow>
+                        </TableLayout>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/tableRow11">
+                        <TextView
+                            android:text="Occupant Contact:"
+                            android:layout_column="0"
+                            android:id="@+id/textView22"
+                            style="@style/radioButtonSmall_XLarge"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:phoneNumber="false" />
+                        <RadioGroup
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_column="1"
+                            android:id="@+id/radioGroup4">
+                            <TableLayout
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tableLayout3">
+                                <TableRow
+                                    android:id="@+id/tableRow12">
+                                    <RadioButton
+                                        android:text="Yes"
+                                        android:layout_column="0"
+                                        android:id="@+id/rdbContact_yes"
+                                        style="@style/radioButtonSmall_XLarge"
+                                        android:layout_marginTop="8dp" />
+                                    <RadioButton
+                                        android:text="No"
+                                        android:layout_column="1"
+                                        android:id="@+id/rdbContact_no"
+                                        style="@style/radioButtonSmall_XLarge"
+                                        android:layout_marginTop="8dp" />
+                                </TableRow>
+                            </TableLayout>
+                        </RadioGroup>
+                    </TableRow>
+                    <TableRow
+                        android:id="@+id/tableRow11">
+                        <TextView
+                            android:text="Sale Sign?"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:layout_column="0"
+                            android:id="@+id/txtContact"
+                            style="@style/radioButtonSmall_XLarge"
+                            android:layout_marginTop="5dp" />
+                        <RadioGroup
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_column="1"
+                            android:id="@+id/radioGroup4">
+                            <TableLayout
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tableLayout4">
+                                <TableRow
+                                    android:id="@+id/tableRow13">
+                                    <RadioButton
+                                        android:text="Yes"
+                                        android:layout_column="0"
+                                        android:id="@+id/rdbSalesign_yes"
+                                        style="@style/radioButtonSmall_XLarge"
+                                        android:layout_marginTop="3dp" />
+                                    <RadioButton
+                                        android:text="No"
+                                        android:layout_column="1"
+                                        android:id="@+id/rdbSalesign_no"
+                                        style="@style/radioButtonSmall_XLarge"
+                                        android:layout_marginTop="3dp" />
+                                </TableRow>
+                            </TableLayout>
+                        </RadioGroup>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tableLayout1">
+            <TableRow
+                android:id="@+id/tableRow8">
+                <TextView
+                    android:text="For Sale By:"
+                    android:layout_column="0"
+                    android:id="@+id/textView20"
+                    style="@style/tblColLeft_XLarge" />
+                <EditText
+                    android:id="@+id/txtSaleBy"
+                    style="@style/editText_1_XLarge" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow8">
+                <TextView
+                    android:text="# Of Postings:"
+                    android:layout_column="0"
+                    android:id="@+id/textView20"
+                    style="@style/tblColLeft_XLarge" />
+                <EditText
+                    android:id="@+id/txtNumPostings"
+                    style="@style/editText_1_XLarge"
+                    android:numeric="integer"
+                    android:maxLength="2"
+                    android:inputType="number" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow8">
+                <TextView
+                    android:text="Comment:"
+                    android:layout_column="0"
+                    android:id="@+id/textView20"
+                    style="@style/tblColLeft_XLarge" />
+                <EditText
+                    android:id="@+id/txtComment"
+                    style="@style/editText_1_XLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+        </TableLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:id="@+id/view1"
+            android:background="#ffc1c1c1"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="7dp" />
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView1">
+            <Gallery
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/gallery1" />
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

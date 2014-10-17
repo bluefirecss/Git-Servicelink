@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <style name="button_text" >
+    <item name="android:layout_width" >wrap_content</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:color">#ff0992cf</item>
+    <item name="android:padding" >0dp</item>
+    <item name="android:layout_marginTop">-5dp</item>
+    <item name="android:layout_marginLeft">55dp</item>
+    <item name="android:background">#ff0992cf</item>
+    <item name="android:textSize" >15dp</item>
+    <item name="android:textStyle" >normal</item>
+    <item name="android:shadowColor" >#000000</item>
+    <item name="android:shadowDx" >1</item>
+    <item name="android:shadowDy" >1</item>
+    <item name="android:shadowRadius" >2</item>
+   
+  </style>
+  <style name="textButton">
+    <item name="android:layout_width" >wrap_content</item>
+    <item name="android:layout_height" >20dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:background">#808080</item>
+    <item name="android:textSize" >10dp</item>
+    <item name="android:textStyle" >normal</item>
+    <item name="android:padding" >3dp</item>
+  </style>
+  <style  name="table_leftCol">
+    <item name="android:layout_width" >20dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:background">#ff0992cf</item>
+    <item name="android:padding" >2dp</item>
+  </style>
+
+  <style  name="leftCol_text2">
+    <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#20B2AA</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >10dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+  <style name="leftCol_text">
+    <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#ff0992cf</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >10dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+  <style name="rightCol_text">
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingLeft" >8dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >12dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+  <style name="radio_Button">
+    <item name="android:layout_height" >30dp</item>
+    <item name="android:textSize" >12dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+
+  <style name="tableHeader_1">
+    <item name="android:layout_width" >150dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >12dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >5dp</item>
+  </style>
+  <style name="tableHeader_2">
+    <item name="android:layout_width" >150dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >12dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >0dp</item>
+  </style>
+  <style name="tblCol_left1">
+    <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >10dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+  <style name="editText_1">
+    <item name="android:layout_width" >220dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:textSize" >12dp</item>
+  </style>
+  <style name="smalltext_grid">
+  <item name="android:layout_height" >25dp</item>
+  <item name="android:textSize" >11dp</item>
+  </style>
+  <style  name="leftCol_text_Large">
+  <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#ff0992cf</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >17dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+<style name="rightCol_text_Large">
+   <item name="android:padding" >3dp</item>
+    <item name="android:paddingLeft" >8dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >18dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style  name="buttonText_Large">
+    <item name="android:layout_width" >wrap_content</item>
+    <item name="android:layout_height" >24dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:background">#808080</item>
+    <item name="android:textSize" >15dp</item>
+    <item name="android:textStyle" >normal</item>
+    <item name="android:padding" >3dp</item>
+  </style>
+<style name="tableHeaderLeft_Large">
+   <item name="android:layout_width" >210dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >18dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >5dp</item>
+  </style>
+  <style name="tableHeaderRight_Large">
+  <item name="android:layout_width" >250dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >18dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >0dp</item>
+  </style>
+<style name="radioButton_Large">
+   <item name="android:layout_height" >40dp</item>
+    <item name="android:textSize" >17dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style name="radioButtonSmall_Large">
+   <item name="android:textSize" >17dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style  name="tblColLeft_Large">
+   <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >18dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+<style name="editText_1_Large">
+   <item name="android:layout_width" >350dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:textSize" >18dp</item>
+  </style>
+
+   <style  name="leftCol_text_XLarge">
+  <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#ff0992cf</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >24dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+<style name="rightCol_text_XLarge">
+   <item name="android:padding" >3dp</item>
+    <item name="android:paddingLeft" >8dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >25dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style  name="buttonText_XLarge">
+    <item name="android:layout_width" >wrap_content</item>
+    <item name="android:layout_height" >35dp</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:background">#808080</item>
+    <item name="android:textSize" >21dp</item>
+    <item name="android:textStyle" >normal</item>
+    <item name="android:padding" >3dp</item>
+  </style>
+<style name="tableHeaderLeft_XLarge">
+   <item name="android:layout_width" >340dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >25dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >5dp</item>
+  </style>
+  <style name="tableHeaderRight_XLarge">
+  <item name="android:layout_width" >435dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:gravity" >center_horizontal</item>
+    <item name="android:paddingBottom" >2dp</item>
+    <item name="android:paddingTop" >2dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >25dp</item>
+    <item name="android:textStyle" >italic</item>
+    <item name="android:layout_marginRight" >0dp</item>
+  </style>
+<style name="radioButton_XLarge">
+  <item name="android:layout_height" >50dp</item>
+    <item name="android:textSize" >25dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style name="radioButtonSmall_XLarge">
+   <item name="android:textSize" >22dp</item>
+    <item name="android:textStyle" >normal</item>
+  </style>
+<style  name="tblColLeft_XLarge">
+   <item name="android:gravity" >right</item>
+    <item name="android:padding" >3dp</item>
+    <item name="android:paddingRight" >8dp</item>
+    <item name="android:background">#696969</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:textSize" >25dp</item>
+    <item name="android:textStyle" >italic</item>
+  </style>
+<style name="editText_1_XLarge">
+   <item name="android:layout_width" >550dp</item>
+    <item name="android:layout_height" >wrap_content</item>
+    <item name="android:textSize" >25dp</item>
+  </style>
+<style name="loginText_Large">
+  <item name="android:textSize" >28dp</item>
+  </style>
+  <style name="loginText_XLarge">
+  <item name="android:textSize" >35dp</item>
+  </style>
+</resources>

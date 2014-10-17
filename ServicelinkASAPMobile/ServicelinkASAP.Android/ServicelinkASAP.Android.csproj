@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{2A9525E8-1A39-4937-9293-A256596A6ACB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ServicelinkASAP.Android</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>ServicelinkASAP.Android</AssemblyName>
+    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SQLite">
+      <HintPath>..\Components\sqlite-net-1.0.8\lib\android\SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\Components\xamarin.mobile-0.7.1\lib\android\Xamarin.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="SignaturePad.Android">
+      <HintPath>..\Components\signature-pad-1.3.3\lib\android\SignaturePad.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="Mono.Android.Export" />
+    <Reference Include="Mono.Android.Support.v4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activity\LoginActivity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Fragments\AccountFragment.cs" />
+    <Compile Include="Fragments\PostingDetailFragment.cs" />
+    <Compile Include="Fragments\SalesDetailFragment.cs" />
+    <Compile Include="Fragments\SignatureFragment.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Database.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Document.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Enumerations.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Posting.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Signature.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\SyncResult.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\User.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\Http.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\IAccountService.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\ILoginService.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\IPostingService.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\ApplicationShared.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\DataExtensions.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\ErrorHandling.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\ServiceContainer.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\TaskExtensions.cs" />
+    <Compile Include="ServicelinkASAPMobile\ViewModels\AuthenticationHeader.cs" />
+    <Compile Include="ServicelinkASAPMobile\ViewModels\UserModel.cs" />
+    <Compile Include="ServicelinkASAPMobile\ViewModels\WebServiceClient.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\AccountDataAccess.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\LoginWebService.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\PostingDataAccess.cs" />
+    <Compile Include="Fragments\SliderMenu.cs" />
+    <Compile Include="Fragments\LoginFragment.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\ProjConfiguration.cs" />
+    <Compile Include="Services\AssignmentService.cs" />
+    <Compile Include="Activity\ExpandableListViewActivity.cs" />
+    <Compile Include="Adapter\ExpandableListViewAdapter.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Menu.cs" />
+    <Compile Include="Services\AssignmentBroadcastReceiver.cs" />
+    <Compile Include="Activity\AssignmentListViewActivity.cs" />
+    <Compile Include="Fragments\AssignmentListViewFragment.cs" />
+    <Compile Include="Adapter\AssignmentListAdapter.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Assignment.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Sale.cs" />
+    <Compile Include="Adapter\ImageAdapter.cs" />
+    <Compile Include="Activity\CameraActivity.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\BitmapHelper.cs" />
+    <Compile Include="Fragments\SplitViewFragment.cs" />
+    <Compile Include="Fragments\ExceptionFragment.cs" />
+    <Compile Include="ServicelinkASAPMobile\Service\PhotoDataAccess.cs" />
+    <Compile Include="ServicelinkASAPMobile\Data\Photo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\MenuContentLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MenuLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\drawable\MenuButton.xml" />
+    <AndroidResource Include="Resources\values\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ExpandableListItem1.axml" />
+    <AndroidResource Include="Resources\layout\ExpandableListItem2.axml" />
+    <AndroidResource Include="Resources\layout\CustomListItem.axml" />
+    <AndroidResource Include="Resources\layout\PostingDetailLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SalesDetailLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AssignmentListLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AccountLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ImageLayout.axml" />
+    <AndroidResource Include="Resources\menu\postingmenu.xml" />
+    <AndroidResource Include="Resources\drawable\ic_action_new.png" />
+    <AndroidResource Include="Resources\drawable\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-hdpi\.DS_Store" />
+    <None Include="Resources\drawable\drawable-hdpi\ic_action_call.png" />
+    <None Include="Resources\drawable\drawable-hdpi\ic_action_new.png" />
+    <None Include="Resources\drawable\drawable-hdpi\ic_action_overflow.png" />
+    <None Include="Resources\drawable\drawable-hdpi\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-hdpi\qualtechaction.png" />
+    <None Include="Resources\drawable\drawable-ldpi\.DS_Store" />
+    <None Include="Resources\drawable\drawable-ldpi\ic_action_call.png" />
+    <None Include="Resources\drawable\drawable-ldpi\ic_action_new.png" />
+    <None Include="Resources\drawable\drawable-ldpi\ic_action_overflow.png" />
+    <None Include="Resources\drawable\drawable-ldpi\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-ldpi\qualtechaction.png" />
+    <None Include="Resources\drawable\drawable-mdpi\.DS_Store" />
+    <None Include="Resources\drawable\drawable-mdpi\ic_action_call.png" />
+    <None Include="Resources\drawable\drawable-mdpi\ic_action_new.png" />
+    <None Include="Resources\drawable\drawable-mdpi\ic_action_overflow.png" />
+    <None Include="Resources\drawable\drawable-mdpi\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-mdpi\qualtechaction.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\.DS_Store" />
+    <None Include="Resources\drawable\drawable-xhdpi\ic_action_call.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\ic_action_new.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\ic_action_overflow.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-xhdpi\qualtechaction.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\.DS_Store" />
+    <None Include="Resources\drawable\drawable-xxhdpi\ic_action_call.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\ic_action_new.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\ic_action_overflow.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\ic_action_refresh.png" />
+    <None Include="Resources\drawable\drawable-xxhdpi\qualtechaction.png" />
+    <AndroidResource Include="Resources\drawable\custom_progressBar.xml" />
+    <AndroidResource Include="Resources\values\color.xml" />
+    <AndroidResource Include="Resources\layout\DialogFragment.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SplitViewLayout.axml" />
+    <AndroidResource Include="Resources\animator\slide_in_left.xml" />
+    <AndroidResource Include="Resources\animator\slide_in_right.xml" />
+    <AndroidResource Include="Resources\animator\slide_out_left.xml" />
+    <AndroidResource Include="Resources\animator\slide_out_right.xml" />
+    <AndroidResource Include="Resources\layout-sw700dp\SplitViewLayout.axml" />
+    <AndroidResource Include="Resources\layout-large\PostingDetailLayout.axml" />
+    <AndroidResource Include="Resources\layout-xlarge\PostingDetailLayout.axml" />
+    <AndroidResource Include="Resources\layout-xlarge\Login.axml" />
+    <AndroidResource Include="Resources\layout-large\Login.axml" />
+    <AndroidResource Include="Resources\layout\ExceptionLayout.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AndroidManifest.xml" />
+    <AndroidResource Include="Resources\drawable\action_menu.png" />
+    <AndroidResource Include="Resources\drawable\indicator.gif" />
+    <AndroidResource Include="Resources\drawable\refresh_30.png" />
+    <AndroidResource Include="Resources\drawable\refresh_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="sqlite-net">
+      <Version>1.0.8</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.mobile">
+      <Version>0.7.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="signature-pad">
+      <Version>1.3.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\animator\" />
+  </ItemGroup>
+</Project>

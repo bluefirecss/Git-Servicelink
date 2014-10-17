@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx">
+      <s:element name="Ping">
+        <s:complexType />
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PingResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Deviceid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="agentUserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pwdExpired" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="forgotPwd" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticateDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateDeviceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="signature" type="tns:Signature" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Signature">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SignatureData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateSignatureResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="1" maxOccurs="1" name="myDay" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostingsResult" type="tns:ArrayOfPosting" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPosting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Posting" nillable="true" type="tns:Posting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Posting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TSNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Trustor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyZip" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstPubDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostByDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostOn" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostNotes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelInd" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPostingRejected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Completed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdatePostings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatedPostings" type="tns:ArrayOfUpdatedPosting" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUpdatedPosting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdatedPosting" nillable="true" type="tns:UpdatedPosting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdatedPosting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Occupancy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OccupantContacted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostedOn" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumPostings" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ForSaleBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ForSaleSign" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SavedTimeStamp" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReposting" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsException" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionReason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNor" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Images" type="tns:ArrayOfImageData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfImageData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageData" nillable="true" type="tns:ImageData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ImageData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdatePostingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePostingsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddDeviceToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="activate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDeviceTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDeviceTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPushAlert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="agentUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPushAlertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPushAlertResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="error" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentOrDelegateByOrderId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="asapId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentOrDelegateByOrderIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgentOrDelegateByOrderIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="asapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderByIdResult" type="tns:ArrayOfSales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Sales" nillable="true" type="tns:Sales" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sales">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ASAPID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TSNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="APN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Trustor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PPTFromDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PPTToDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PPTReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoticeOfSaleAmt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpenLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OpenHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyClearInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Increment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PropertyZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountyID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoldResult" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BidAtInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BidType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleLocatonGMTOffSet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instrument" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Book" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Page" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecordedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoldAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleResultID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Representative" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestedToName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestedAs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestingNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleNumberPresent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleNumberInterested" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleCompletedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleInfoCompletedAt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastUpdateDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="agentUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSalesResult" type="tns:ArrayOfSales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="SaleResults" type="tns:ArrayOfSaleResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSaleResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SaleResult" nillable="true" type="tns:SaleResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SaleResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SoldAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleResultID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Representative" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestedToName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestedAs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VestingNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendToCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleNumberPresent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleNumberInterested" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleCompletedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleInfoCompletedAt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastUpdateDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Images" type="tns:ArrayOfImageData" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateSalesResult" type="tns:ArrayOfSales" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCanXPPT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="SaleResults" type="tns:ArrayOfSaleResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmCanXPPTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmCanXPPTResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateHold">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authHeader" type="tns:AuthenticationHeader" />
+            <s:element minOccurs="0" maxOccurs="1" name="asapId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateHoldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateHoldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dateTime" type="s:dateTime" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateDevice" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSignature" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostings" />
+  </wsdl:message>
+  <wsdl:message name="GetPostingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePostingsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePostings" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePostingsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePostingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDeviceToken" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDeviceTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPushAlertSoapIn">
+    <wsdl:part name="parameters" element="tns:SendPushAlert" />
+  </wsdl:message>
+  <wsdl:message name="SendPushAlertSoapOut">
+    <wsdl:part name="parameters" element="tns:SendPushAlertResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgentOrDelegateByOrderId" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgentOrDelegateByOrderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOrderById" />
+  </wsdl:message>
+  <wsdl:message name="GetOrderByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOrderByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSales" />
+  </wsdl:message>
+  <wsdl:message name="GetSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSales" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCanXPPTSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmCanXPPT" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmCanXPPTSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmCanXPPTResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHoldSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateHold" />
+  </wsdl:message>
+  <wsdl:message name="UpdateHoldSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateHoldResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpGetIn" />
+  <wsdl:message name="PingHttpGetOut">
+    <wsdl:part name="Body" element="tns:dateTime" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="activate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdHttpGetIn">
+    <wsdl:part name="asapId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpPostIn" />
+  <wsdl:message name="PingHttpPostOut">
+    <wsdl:part name="Body" element="tns:dateTime" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="activate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddDeviceTokenHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdHttpPostIn">
+    <wsdl:part name="asapId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentOrDelegateByOrderIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="FieldServiceSoap">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateDevice">
+      <wsdl:input message="tns:AuthenticateDeviceSoapIn" />
+      <wsdl:output message="tns:AuthenticateDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSignature">
+      <wsdl:input message="tns:UpdateSignatureSoapIn" />
+      <wsdl:output message="tns:UpdateSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostings">
+      <wsdl:input message="tns:GetPostingsSoapIn" />
+      <wsdl:output message="tns:GetPostingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePostings">
+      <wsdl:input message="tns:UpdatePostingsSoapIn" />
+      <wsdl:output message="tns:UpdatePostingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <wsdl:input message="tns:AddDeviceTokenSoapIn" />
+      <wsdl:output message="tns:AddDeviceTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPushAlert">
+      <wsdl:input message="tns:SendPushAlertSoapIn" />
+      <wsdl:output message="tns:SendPushAlertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <wsdl:input message="tns:GetAgentOrDelegateByOrderIdSoapIn" />
+      <wsdl:output message="tns:GetAgentOrDelegateByOrderIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <wsdl:input message="tns:GetOrderByIdSoapIn" />
+      <wsdl:output message="tns:GetOrderByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSales">
+      <wsdl:input message="tns:GetSalesSoapIn" />
+      <wsdl:output message="tns:GetSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSales">
+      <wsdl:input message="tns:UpdateSalesSoapIn" />
+      <wsdl:output message="tns:UpdateSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCanXPPT">
+      <wsdl:input message="tns:ConfirmCanXPPTSoapIn" />
+      <wsdl:output message="tns:ConfirmCanXPPTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHold">
+      <wsdl:input message="tns:UpdateHoldSoapIn" />
+      <wsdl:output message="tns:UpdateHoldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FieldServiceHttpGet">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpGetIn" />
+      <wsdl:output message="tns:PingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <wsdl:input message="tns:AddDeviceTokenHttpGetIn" />
+      <wsdl:output message="tns:AddDeviceTokenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <wsdl:input message="tns:GetAgentOrDelegateByOrderIdHttpGetIn" />
+      <wsdl:output message="tns:GetAgentOrDelegateByOrderIdHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="FieldServiceHttpPost">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpPostIn" />
+      <wsdl:output message="tns:PingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <wsdl:input message="tns:AddDeviceTokenHttpPostIn" />
+      <wsdl:output message="tns:AddDeviceTokenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <wsdl:input message="tns:GetAgentOrDelegateByOrderIdHttpPostIn" />
+      <wsdl:output message="tns:GetAgentOrDelegateByOrderIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FieldServiceSoap" type="tns:FieldServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateDevice">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AuthenticateDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSignature">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostings">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetPostings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePostings">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdatePostings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AddDeviceToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPushAlert">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/SendPushAlert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetAgentOrDelegateByOrderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetOrderById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSales">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSales">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCanXPPT">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/ConfirmCanXPPT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHold">
+      <soap:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateHold" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FieldServiceSoap12" type="tns:FieldServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateDevice">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AuthenticateDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSignature">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostings">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetPostings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePostings">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdatePostings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/AddDeviceToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPushAlert">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/SendPushAlert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetAgentOrDelegateByOrderId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetOrderById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSales">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/GetSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSales">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCanXPPT">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/ConfirmCanXPPT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHold">
+      <soap12:operation soapAction="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx/UpdateHold" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FieldServiceHttpGet" type="tns:FieldServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <http:operation location="/AddDeviceToken" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <http:operation location="/GetAgentOrDelegateByOrderId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FieldServiceHttpPost" type="tns:FieldServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDeviceToken">
+      <http:operation location="/AddDeviceToken" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrDelegateByOrderId">
+      <http:operation location="/GetAgentOrDelegateByOrderId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FieldService">
+    <wsdl:port name="FieldServiceSoap" binding="tns:FieldServiceSoap">
+      <soap:address location="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FieldServiceSoap12" binding="tns:FieldServiceSoap12">
+      <soap12:address location="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FieldServiceHttpGet" binding="tns:FieldServiceHttpGet">
+      <http:address location="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FieldServiceHttpPost" binding="tns:FieldServiceHttpPost">
+      <http:address location="https://staging.wise.servicelinkasap.com/fieldservices/fieldservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
