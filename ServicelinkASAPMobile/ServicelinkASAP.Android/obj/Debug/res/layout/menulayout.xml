@@ -1,1 +1,40 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="25px" android:minHeight="25px"><LinearLayout android:orientation="vertical" android:minWidth="25px" android:minHeight="25px" android:layout_width="300dp" android:layout_height="match_parent" android:id="@+id/linearLayout1" android:background="#ff0992cf"><ImageButton android:src="@drawable/refresh_15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3dp" android:layout_marginTop="2dp" android:id="@+id/btnRefresh" android:background="#ff0992cf" android:layout_gravity="right" /><ProgressBar android:layout_width="wrap_content" android:layout_height="20dp" android:id="@+id/progressRing" android:layout_marginRight="-13dp" android:layout_marginTop="-19dp" android:visibility="invisible" android:layout_gravity="right" /><ExpandableListView android:minWidth="25px" android:minHeight="25px" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/MenuListView" /></LinearLayout></LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:background="#ff0992cf">
+        <ImageButton
+            android:src="@drawable/refresh_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/btnRefresh"
+            android:background="#ff0992cf"
+            android:layout_gravity="right" />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:id="@+id/progressRing"
+            android:layout_marginRight="-13dp"
+            android:layout_marginTop="-19dp"
+            android:visibility="invisible"
+            android:layout_gravity="right" />
+        <ExpandableListView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/MenuListView" />
+    </LinearLayout>
+</LinearLayout>

@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="Data\Photos.cs" />
     <Compile Include="Data\User.cs" />
-    <Compile Include="Service\IAccountService.cs" />
     <Compile Include="Data\Posting.cs" />
     <Compile Include="Data\Database.cs" />
     <Compile Include="Data\Document.cs" />
@@ -72,12 +71,9 @@
     </Compile>
     <Compile Include="Utilities\DataExtensions.cs" />
     <Compile Include="Utilities\ErrorHandling.cs" />
-    <Compile Include="Service\Http.cs" />
     <Compile Include="Utilities\ServiceContainer.cs" />
     <Compile Include="Utilities\TaskExtensions.cs" />
     <Compile Include="ViewModels\AuthenticationHeader.cs" />
-    <Compile Include="Service\IPostingService.cs" />
-    <Compile Include="Service\ILoginService.cs" />
     <Compile Include="ViewModels\UserModel.cs" />
     <Compile Include="ViewModels\WebServiceClient.cs" />
     <Compile Include="Web References\com.servicelinkasap.wise.staging\Reference.cs">
@@ -85,10 +81,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Service\PostingDataAccess.cs" />
-    <Compile Include="Service\LoginWebService.cs" />
-    <Compile Include="Service\AccountDataAccess.cs" />
-    <Compile Include="Service\ProjConfiguration.cs" />
+    <Compile Include="ServiceApp\IAccountService.cs" />
+    <Compile Include="ServiceApp\Http.cs" />
+    <Compile Include="ServiceApp\IPostingService.cs" />
+    <Compile Include="ServiceApp\ILoginService.cs" />
+    <Compile Include="ServiceApp\PostingDataAccess.cs" />
+    <Compile Include="ServiceApp\LoginWebService.cs" />
+    <Compile Include="ServiceApp\AccountDataAccess.cs" />
+    <Compile Include="ServiceApp\ProjConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

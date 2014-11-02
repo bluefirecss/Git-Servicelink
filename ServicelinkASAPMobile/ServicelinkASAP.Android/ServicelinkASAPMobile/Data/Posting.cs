@@ -1,6 +1,7 @@
 ﻿
 using SQLite;
 using System;
+using System.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,7 +78,7 @@ namespace ServicelinkASAPMobile.Data {
 
 		public float Longitude { get; set; }
 
-        public Photos[] Photos { get; set;}
+        public Photo[] Photos { get; set;}
 
 
 		#region UI properties

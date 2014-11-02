@@ -31,7 +31,7 @@ namespace ServicelinkASAP.Android
 		Intent assignmentServiceIntent;
 		AssignmentServiceConnection assignmentServiceConnection;
         public Action<MenuItem, string> MenuItemSelected = delegate { };
-        ApplicationShared app;
+        //ApplicationShared app;
         //AssignmentListViewFragment assignmentViewFragment;
 
 		int pending_P = 0;
@@ -50,7 +50,7 @@ namespace ServicelinkASAP.Android
 
 		protected override void OnStart(){
 			base.OnStart ();
-            app = (ApplicationShared)Application.ApplicationContext;  
+            //app = (ApplicationShared)Application.ApplicationContext;  
 
 			var intentFilter = new IntentFilter (AssignmentService.AssignmentUpdatedAction){Priority = (int)IntentFilterPriority.HighPriority};
 			RegisterReceiver (assignmentReceiver, intentFilter);
@@ -77,7 +77,7 @@ namespace ServicelinkASAP.Android
 		protected override void OnResume ()
 		{
 			base.OnResume ();
-			if (app.GetNetworkActive()) {
+			if (ApplicationShared.Current.GetNetworkActive()) {
 				GetMenuData ();
 			}
 		}
@@ -95,11 +95,11 @@ namespace ServicelinkASAP.Android
 			btnRefresh.Click += (object sender, EventArgs e) => {
                 btnRefresh.Visibility = ViewStates.Invisible;
                 progressbar.Visibility = ViewStates.Visible;
-                if (!app.GetNetworkActive())
+				if (!ApplicationShared.Current.GetNetworkActive())
                 {
                     progressbar.Visibility = ViewStates.Invisible;
                     btnRefresh.Visibility = ViewStates.Visible;
-                    app.InvokeBaseAlertDialog("Sync Error", "There is no network connection, failed to sync data.");
+					ApplicationShared.Current.InvokeBaseAlertDialog("Sync Error", "There is no network connection, failed to sync data.");
                     return;
                 }
 				List<Posting> postings = new List<Posting>();
@@ -168,8 +168,8 @@ namespace ServicelinkASAP.Android
 			}
 			progressbar.Visibility = ViewStates.Invisible;
 			btnRefresh.Visibility = ViewStates.Visible;
-			if (app.GetSyncStatus()) {
-                app.SetSyncStatus(false);
+			if (ApplicationShared.Current.GetSyncStatus()) {
+				ApplicationShared.Current.SetSyncStatus(false);
 			}
 		}
 			

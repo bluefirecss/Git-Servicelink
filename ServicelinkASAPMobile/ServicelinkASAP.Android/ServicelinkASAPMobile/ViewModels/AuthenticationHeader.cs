@@ -16,11 +16,12 @@ namespace ServicelinkASAPMobile.ViewModels
 
         public string GetJson(AuthenticationHeader authHeader)
         {
+			/*
 #if __IOS__
 			DeviceType = "iOS";
 #elif __ANDROID__
 			DeviceType = "Android";
-#endif
+#endif*/
             Username = authHeader.Username;
             Password = authHeader.Password;
             Version = authHeader.Version;

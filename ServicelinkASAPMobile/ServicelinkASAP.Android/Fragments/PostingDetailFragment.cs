@@ -20,6 +20,7 @@ using Android.Views;
 
 using ServicelinkASAPMobile;
 using ServicelinkASAPMobile.Data;
+using ServicelinkASAPMobile.Utilities;
 using ServicelinkASAPMobile.Service;
 
 namespace ServicelinkASAP.Android
@@ -27,15 +28,18 @@ namespace ServicelinkASAP.Android
     public class PostingDetailFragment : Fragment
     {
 		public event Action backToList = delegate {};
-		public event Action claimException = delegate {};
+		public event Action<Posting> claimException = delegate {};
+		public event Action loadNextInQueue = delegate {};
+		//public event Action checkLocationCoordinate = delegate{};
 		public bool appHasCamera;
+
 		List<Photo> photos = new List<Photo>();
 		Posting posting = null;
 		LayoutInflater inflater;
 		Gallery gallery = null;
 		PostingDataAccess pda = new PostingDataAccess();
 		PhotoDataAccess photoda = new PhotoDataAccess ();
-		ApplicationShared app;
+		//ApplicationShared app;
 		TextView txtOrderID;
 		TextView txtTS;
 		TextView txtAPN;
@@ -61,6 +65,8 @@ namespace ServicelinkASAP.Android
 		EditText etxtSaleBy;
 		EditText etxtPostingNum;
 		EditText etxtComment;
+		ImageButton btnSave ;
+		int imgWidth = 100;
 
 		public PostingDetailFragment(){
 		}
@@ -69,19 +75,25 @@ namespace ServicelinkASAP.Android
 			posting = p;
 		}
 
+		public override void OnStart ()
+		{
+			base.OnStart ();
+		}
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 			RetainInstance = true;
 			SetHasOptionsMenu(true);
-			app = (ApplicationShared)Application.Context;
+
 			if (posting == null) {
-				posting = app.GetLastSelectedAssignment ().posting;
+				posting = ApplicationShared.Current.GetLastSelectedAssignment ().posting;
 			}
 
 			if (appHasCamera) {
 				CreateDirectoryForPictures ();
 			}
+		
         }
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -143,6 +155,18 @@ namespace ServicelinkASAP.Android
 			Button removeImageButton = view.FindViewById<Button> (Resource.Id.clearImgButton);
 			removeImageButton.Click += ImageButtonClick;
 
+			ImageButton btnCamera = view.FindViewById<ImageButton> (Resource.Id.btnCamera);
+			ImageButton btnClear = view.FindViewById<ImageButton> (Resource.Id.btnClear);
+			btnSave = view.FindViewById<ImageButton> (Resource.Id.btnSave);
+			ImageButton btnException = view.FindViewById<ImageButton> (Resource.Id.btnException);
+
+			btnCamera.Click += TakeAPicture;
+			btnSave.Click += SavePosting;
+			btnClear.Click += ResetPage;
+			btnException.Click += OpenException;
+
+			DetectLocationService ();
+
 			LoadOrderDetails ();
 			GetPhotos ();
 			//load images in gallery
@@ -162,6 +186,30 @@ namespace ServicelinkASAP.Android
 				popup.ShowAtLocation (view, GravityFlags.Center, 0, 0);
 				//Toast.MakeText (this, args.Position.ToString (), ToastLength.Short).Show ();
 			};
+		}
+
+		public override void OnResume ()
+		{
+			base.OnResume ();
+			DetectLocationService ();
+		}
+
+		private void DetectLocationService(){
+			if (btnSave == null) {
+				btnSave = this.View.FindViewById<ImageButton> (Resource.Id.btnSave);
+			}
+			btnSave.Enabled = true;
+			if (!App.locationServiceEnabled) {
+				btnSave.Enabled = false;
+				var dlgAlert = (new AlertDialog.Builder (this.View.Context)).Create ();
+				dlgAlert.SetMessage ("Location service is currently disabled in your device, you will not be able to SAVE normal files until the service is enabled!");
+				dlgAlert.SetTitle ("Application Warning");
+				dlgAlert.SetButton ("Dismiss", (object sender, DialogClickEventArgs args) =>{
+					dlgAlert.Dismiss();
+				});
+
+				dlgAlert.Show ();
+			}
 		}
 
 
@@ -232,7 +280,86 @@ namespace ServicelinkASAP.Android
 
 		private void ImageButtonClick (object sender, EventArgs e)
 		{
-			photoda.DeletePhotoList_Async (photos);
+			var dlgAlert = (new AlertDialog.Builder (this.View.Context)).Create ();
+			dlgAlert.SetMessage ("Are you sure to delete all images for this file?");
+			dlgAlert.SetTitle ("Confirm Delete");
+			dlgAlert.SetButton ("Continue", DeletePhotoDialogHandler);
+			dlgAlert.SetButton2 ("Cancel", DeletePhotoDialogHandler);
+			dlgAlert.Show ();
+		}
+
+		private void TakeAPicture(object sender, EventArgs args)
+		{
+			Intent intent = new Intent(MediaStore.ActionImageCapture);
+
+			App._file = new File(App._dir, String.Format("{0}_{1}.jpg", App.OrderID , Guid.NewGuid()));
+
+			intent.PutExtra(MediaStore.ExtraOutput, global::Android.Net.Uri.FromFile(App._file));
+
+			StartActivityForResult(intent, 0);
+		}
+
+		private void ResetPage(object sender, EventArgs args)
+		{
+			var dlgAlert = (new AlertDialog.Builder (this.View.Context)).Create ();
+			dlgAlert.SetMessage ("Are you sure to clear the user input?");
+			dlgAlert.SetTitle ("Confirm Clear");
+			dlgAlert.SetButton ("Continue", ClearDialogHandler);
+			dlgAlert.SetButton2 ("Cancel", ClearDialogHandler);
+			//dlgAlert.SetButton3 ("Nothing", handllerNotingButton);
+			dlgAlert.Show ();
+		}
+
+		private void SavePosting(object sender, EventArgs args)
+		{
+			var dlgAlert = (new AlertDialog.Builder (this.View.Context)).Create ();
+			dlgAlert.SetMessage ("Do you certifiy that the above is true?");
+			dlgAlert.SetTitle ("Confirm Save");
+			dlgAlert.SetButton ("Yes", SaveDialogHandler);
+			dlgAlert.SetButton2 ("No", SaveDialogHandler);
+			dlgAlert.Show ();
+		}
+
+		private void OpenException(object sender, EventArgs args)
+		{
+			claimException (posting);
+		}
+
+		private void ClearDialogHandler(object sender, DialogClickEventArgs e){
+			AlertDialog objAlertDialog = sender as AlertDialog;
+			Button btnClicked = objAlertDialog.GetButton (e.Which);
+			if (btnClicked.Text == "Continue") {
+				ClearInput ();
+			}
+			if (btnClicked.Text == "Cancel") {
+				objAlertDialog.Dismiss ();
+			}
+			//Toast.MakeText (this, "you clicked on " + btnClicked.Text, ToastLength.Long).Show ();
+		}
+
+		private void SaveDialogHandler(object sender, DialogClickEventArgs e){
+			AlertDialog objAlertDialog = sender as AlertDialog;
+			Button btnClicked = objAlertDialog.GetButton (e.Which);
+			if (btnClicked.Text == "Yes") {
+				SaveOrder ();
+			}
+			if (btnClicked.Text == "No") {
+				objAlertDialog.Dismiss ();
+			}
+
+		}
+
+		private void DeletePhotoDialogHandler(object sender, DialogClickEventArgs e){
+			AlertDialog objAlertDialog = sender as AlertDialog;
+			Button btnClicked = objAlertDialog.GetButton (e.Which);
+			if (btnClicked.Text == "Continue") {
+				photoda.DeletePhotoList_Async (photos);
+				ImageAdapter adapter = (ImageAdapter)gallery.Adapter;
+				adapter.NotifyDataSetChanged ();
+			}
+			if (btnClicked.Text == "Cancel") {
+				objAlertDialog.Dismiss ();
+			}
 		}
 
 		private void LoadOrderDetails(){
@@ -258,6 +385,7 @@ namespace ServicelinkASAP.Android
 		}
 
 		private void checkRadioButton_PostingLocation(PostingLocation location){
+			posting.PostingLocation = location;
 			if (location == PostingLocation.FrontDoor) {
 				rdbFront.Checked = true;
 				rdbGate.Checked = false;
@@ -276,6 +404,7 @@ namespace ServicelinkASAP.Android
 		}
 
 		private void checkRadioButton_PropertyType(PropertyType type){
+			posting.PropertyType = type;
 			if (type == PropertyType.Residential) {
 				rdbResidential.Checked = true;
 				rdbCommercial.Checked = false;
@@ -294,6 +423,7 @@ namespace ServicelinkASAP.Android
 		}
 
 		private void checkRadioButton_Occupancy(Occupancy occu){
+			posting.Occupancy = occu;
 			if (occu == Occupancy.Occupied) {
 				rdbOccupied.Checked = true;
 				rdbUnoccupied.Checked = false;
@@ -321,6 +451,7 @@ namespace ServicelinkASAP.Android
 		}
 
 		private void checkRadioButton_Contact(bool canContact){
+			posting.OccupantContacted = canContact.ToString();
 			if (canContact) {
 				rdbContactYes.Checked = true;
 				rdbContactNo.Checked = false;
@@ -331,6 +462,7 @@ namespace ServicelinkASAP.Android
 
 		}
 		private void checkRadioButton_SaleSign(bool hasSign){
+			posting.ForSaleSign = hasSign.ToString();
 			if (hasSign) {
 				rdbSignYes.Checked = true;
 				rdbSignNo.Checked = false;
@@ -342,6 +474,9 @@ namespace ServicelinkASAP.Android
 		}
 
 		private void checkRadioButton_NOS(bool isNos){
+			posting.NOD = (isNos ? false : true).ToString();
+			posting.NOS = isNos.ToString();
+			posting.NOR = isNos.ToString();
 			if (isNos) {
 				rdbNOS.Checked = true;
 				rdbNOD.Checked = false;
@@ -369,10 +504,41 @@ namespace ServicelinkASAP.Android
 		private void GetPhotos(){
 			photoda.GetPhotos_Async (App.OrderID).ContinueWith (t => {
 				photos = t.Result;
+				posting.Photos = photos.ToArray();
 			});
 		}
 
 		private void SaveOrder(){
+			GetPhotos ();
+			posting.Comments = etxtComment.Text.Trim ();
+			posting.NumberOfPostings = etxtPostingNum.Text.Trim ();
+			posting.ForSaleBy = etxtSaleBy.Text.Trim ();
+			posting.SaleDateTime = DateTime.Now.ToString();
+			string errroMsg = ValidateFields ();
+			if (errroMsg == string.Empty) {
+				pda.SavePosting_Async (posting).ContinueWith (t => {
+					if (t.IsCompleted) {
+						loadNextInQueue ();
+					} else {
+						Toast.MakeText (this.View.Context, "Oops, this action failed.", ToastLength.Long).Show ();
+					}
+				});
+			} else {
+
+				var dlgAlert = (new AlertDialog.Builder (this.View.Context)).Create ();
+				dlgAlert.SetMessage (errroMsg);
+				dlgAlert.SetTitle ("Validation Error");
+				dlgAlert.SetButton ("Dismiss", (object sender, DialogClickEventArgs args) =>{
+					dlgAlert.Dismiss();
+				});
+
+				dlgAlert.Show ();
+			}
+		}
+
+		private string ValidateFields(){
+			return ValidationHandler.ValidatePostingFields (posting);
+
 		}
 
 		private void ClearInput(){
@@ -398,6 +564,17 @@ namespace ServicelinkASAP.Android
 			etxtComment.Text = string.Empty;
 		}
 
+		private void SavePhotoToDB(){
+
+			Photo photo = new Photo ();
+			photo.FileName = App._file.Path;
+			photo.OrderID = txtOrderID.Text;
+			photo.DateCreated = DateTime.Now.ToString ();
+			photo.Latitude =  App.currentLocation.Latitude;
+			photo.Longitude = App.currentLocation.Longitude;
+			photoda.SavePhoto_Async (photo);
+		}
+
 		#region Camera function
         //private void LoadImagesInGallery(View view){
         //    if (gallery != null) {
@@ -411,23 +588,14 @@ namespace ServicelinkASAP.Android
 
 		private void CreateDirectoryForPictures()
 		{
-			App._dir = new File(global::Android.OS.Environment.GetExternalStoragePublicDirectory(global::Android.OS.Environment.DirectoryPictures), "ServicelinkASAP.Android");
+			App._dir = new File(global::Android.OS.Environment.GetExternalStoragePublicDirectory(global::Android.OS.Environment.DirectoryPictures), "ServicelinkASAPMobile_Android");
 			if (!App._dir.Exists())
 			{
 				App._dir.Mkdirs();
 			}
 		}
 
-		private void TakeAPicture()
-		{
-			Intent intent = new Intent(MediaStore.ActionImageCapture);
 
-			App._file = new File(App._dir, String.Format("{0}_{1}.jpg", App.OrderID , Guid.NewGuid()));
-
-			intent.PutExtra(MediaStore.ExtraOutput, global::Android.Net.Uri.FromFile(App._file));
-
-			StartActivityForResult(intent, 0);
-		}
 		#endregion
 
 		#region set option menu
@@ -436,7 +604,7 @@ namespace ServicelinkASAP.Android
 			inflater.Inflate (Resource.Menu.postingmenu, menu);
 			base.OnCreateOptionsMenu (menu, inflater);
 		}
-
+		/*
 		public override bool OnOptionsItemSelected (IMenuItem item)
 		{
 			//return base.OnOptionsItemSelected (item);
@@ -464,6 +632,7 @@ namespace ServicelinkASAP.Android
 			return true;
 
 		}
+		*/
 		#endregion
 
 
@@ -475,6 +644,11 @@ namespace ServicelinkASAP.Android
 			Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
 			global::Android.Net.Uri contentUri = global::Android.Net.Uri.FromFile (App._file);
 			mediaScanIntent.SetData(contentUri);
+
+			App.bitmap = App._file.Path.LoadAndResizeBitmap (imgWidth, Resources.DisplayMetrics.HeightPixels);
+			SavePhotoToDB ();
+			ImageAdapter adapter = (ImageAdapter)gallery.Adapter;
+			adapter.NotifyDataSetChanged ();
 		}
     }
 }

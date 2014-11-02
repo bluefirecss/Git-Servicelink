@@ -18,6 +18,7 @@ using Android.Graphics;
 using Android.Views.Animations;
 using Android.Service;
 using Java.IO;
+using Android.Locations;
 
 using ServicelinkASAPMobile;
 using ServicelinkASAPMobile.Data;
@@ -30,11 +31,12 @@ namespace ServicelinkASAP.Android
 		public static File _dir;     
 		public static Bitmap bitmap;
 		public static string OrderID;
-
+		public static Location currentLocation;
+		public static bool locationServiceEnabled;
 	}
 
 	[Activity (Label = "ServicelinkASAP.Android",ConfigurationChanges=(global::Android.Content.PM.ConfigChanges.Orientation | global::Android.Content.PM.ConfigChanges.ScreenSize), MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity : Activity
+	public class MainActivity : Activity, ILocationListener
 	{
 		int baseFragment;
 		bool userAuthenticated = false;
@@ -43,16 +45,20 @@ namespace ServicelinkASAP.Android
         Http serviceLinkWS = new Http();
         PostingDataAccess pda = new PostingDataAccess();
         ConnectivityManager connectivityManager;
-        ApplicationShared app;
+        //ApplicationShared app;
         ExpandableListViewActivity menuExpandableList;
 		private AssignmentListViewFragment _listFragment;
 		private PostingDetailFragment _postingDetailFragment;
 		private SalesDetailFragment _saleDetailFragment;
+		Location _currentLocation;
+		LocationManager _locationManager;
+		string _locationProvider;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            app = (ApplicationShared)Application.ApplicationContext;           
+
+            //app = (ApplicationShared)Application.ApplicationContext;           
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
@@ -73,6 +79,7 @@ namespace ServicelinkASAP.Android
             {
                 userAuthenticated = checkUserAuthentication();
             }
+			InitializeLocationManager ();
             IsNetworkConnected();
             IsWifiConnected();
             LoadDefaultView();
@@ -121,12 +128,25 @@ namespace ServicelinkASAP.Android
 			return availableActivities != null && availableActivities.Count > 0;
 		}
 
-	
+		protected override void OnStop ()
+		{
+			base.OnStop ();
+			_locationManager.RemoveUpdates (this);
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			_locationManager.RemoveUpdates(this);
+		}
 
 		protected override void OnResume ()
 		{
 			base.OnResume ();
-
+			if (_locationManager == null) {
+				InitializeLocationManager ();
+			}
+			_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
 		}
 
 		public string GetStringFromPeviousActivity(string dataName){
@@ -146,19 +166,58 @@ namespace ServicelinkASAP.Android
 			base.OnConfigurationChanged (newConfig);
 		}
 
+		#region location method
+		void InitializeLocationManager()
+		{
+			_locationManager = (LocationManager)GetSystemService(LocationService);
+			Criteria criteriaForLocationService = new Criteria
+			{
+				Accuracy = Accuracy.Fine
+			};
+			IList<string> acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
+
+			if (acceptableLocationProviders.Any())
+			{
+				_locationProvider = acceptableLocationProviders.First();
+			}
+			else
+			{
+				_locationProvider = String.Empty;
+			}
+		}
+
+		public void OnLocationChanged(Location location) {
+			_currentLocation = location;
+			if (_currentLocation != null)
+			{
+				App.currentLocation = location;
+			}
+		}
+
+		public void OnProviderDisabled(string provider) {
+			App.locationServiceEnabled = false;
+		}
+
+		public void OnProviderEnabled(string provider) {App.locationServiceEnabled = true;}
+
+		public void OnStatusChanged(string provider, Availability status, Bundle extras) {}
+
+		#endregion
+
 
 		#region Custom methods
+	
 		public bool IsNetworkConnected()
 		{ 
 			var activeConnection = connectivityManager.ActiveNetworkInfo;
 			if ((activeConnection != null) && activeConnection.IsConnected)
 			{
-				app.SetNetworkStatus(true);
+				ApplicationShared.Current.SetNetworkStatus(true);
 				return true;
 			}
 			else
 			{
-				app.SetNetworkStatus(false);
+				ApplicationShared.Current.SetNetworkStatus(false);
 				return false;
 			}
 		}
@@ -168,12 +227,12 @@ namespace ServicelinkASAP.Android
 			var mobileState = connectivityManager.GetNetworkInfo(ConnectivityType.Mobile).GetState();
 			if (mobileState == NetworkInfo.State.Connected)
 			{
-				app.SetWifiStatus(true);
+				ApplicationShared.Current.SetWifiStatus(true);
 				return true;
 			}
 			else
 			{
-				app.SetWifiStatus(false);
+				ApplicationShared.Current.SetWifiStatus(false);
 				return false;
 			}
 		}
@@ -220,7 +279,7 @@ namespace ServicelinkASAP.Android
 		public int SwitchScreens (Fragment fragment, bool animated = true, bool isdetail = false, bool isRoot = false)
 		{
 			int baseContainer = Resource.Id.ContentView;
-			app.SetLastBaseContainId (baseContainer);
+			ApplicationShared.Current.SetLastBaseContainId (baseContainer);
 			if (!isRoot) {
 				baseContainer = Resource.Id.mainContainer;
 				if (isdetail) {
@@ -240,7 +299,7 @@ namespace ServicelinkASAP.Android
 			if (!isRoot) {
 				transaction.AddToBackStack (null);
 			} else {
-				app.SetLastFragmentId (fragment.Id);
+				ApplicationShared.Current.SetLastFragmentId (fragment.Id);
 			}
 
 			SetupActionBar (!isRoot);
@@ -280,7 +339,7 @@ namespace ServicelinkASAP.Android
 				_listFragment.RefreshList += SyncData;
 				_listFragment.AssignmentSelected += ShowAssignmentDetail;
 				//if base view is split view, notify AssignmentListView that data source has changed, no need to switch views
-				if (app.GetLastSelectedQueueName() != queueName) { //last selected queue isn't listView
+				if (ApplicationShared.Current.GetLastSelectedQueueName() != queueName) { //last selected queue isn't listView
 					SwitchScreens (_listFragment, true, false, false);
 
 				} else {
@@ -296,10 +355,10 @@ namespace ServicelinkASAP.Android
 					newFragment = new AccountFragment ();
 				}
 				baseFragment = newFragment.Id;
-				if (app.GetLastSelectedQueueName() != queueName) {
+				if (ApplicationShared.Current.GetLastSelectedQueueName() != queueName) {
 					SwitchScreens(newFragment, true, false, true);
 				} else {
-					if (app.GetLastSelectedMenu ().Name != mItem.Name) {
+					if (ApplicationShared.Current.GetLastSelectedMenu ().Name != mItem.Name) {
 						SwitchScreens(newFragment, true, false, true);
 					} else {
 						RefreshCurrentScreen (newFragment);
@@ -307,13 +366,13 @@ namespace ServicelinkASAP.Android
 				}
 			}
 
-			app.SetLastSelectedMenu (mItem);
-			app.SetLastSelectedQueueName (queueName);
+			ApplicationShared.Current.SetLastSelectedMenu (mItem);
+			ApplicationShared.Current.SetLastSelectedQueueName (queueName);
 		}
 
 		public void ShowAssignmentDetail(Assignment assignment)
 		{
-			app.SetLastSelectedAssignment (assignment);
+			ApplicationShared.Current.SetLastSelectedAssignment (assignment);
 			if (assignment.Type == AssignmentType.Postings)
 			{
 				App.OrderID = assignment.posting.OrderID;
@@ -321,7 +380,12 @@ namespace ServicelinkASAP.Android
 				_postingDetailFragment.appHasCamera = IsThereAnAppToTakePictures();
 				baseFragment = _postingDetailFragment.Id;
 				_postingDetailFragment.backToList += BackToListView;
-				_postingDetailFragment.claimException = loadExceptionView;
+				_postingDetailFragment.claimException += loadExceptionView;
+				_postingDetailFragment.loadNextInQueue += loadNextInQueue;
+				/*
+				_postingDetailFragment.checkLocationCoordinate += delegate {
+					_locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+				};*/
 				SwitchScreens(_postingDetailFragment, true, true, false);
 			}
 			else if (assignment.Type == AssignmentType.Sales)
@@ -334,13 +398,13 @@ namespace ServicelinkASAP.Android
 		}
 
 		public void loadOrderListView(){
-			if (app.GetNetworkActive())
+			if (ApplicationShared.Current.GetNetworkActive())
 			{
 				SyncData();
 			}
 			else
 			{
-				app.InvokeBaseAlertDialog("Sync Error", "There is no network connection, failed to sync data.");
+				ApplicationShared.Current.InvokeBaseAlertDialog("Sync Error", "There is no network connection, failed to sync data.");
 			}
 
 			//UpdateMenuItems ();
@@ -398,16 +462,16 @@ namespace ServicelinkASAP.Android
 			SwitchScreens(login, true, false, true);
 		}
 
-		public void loadExceptionView(){
-			var exceptionFragment = new ExceptionFragment ();
-			exceptionFragment.submitException = loadNextInQueue;
+		public void loadExceptionView(Posting posting){
+			var exceptionFragment = new ExceptionFragment (posting);
+			exceptionFragment.submitException += loadNextInQueue;
 			baseFragment = exceptionFragment.Id;
 			SwitchScreens(exceptionFragment, true, false, false);
 		}
 
 		private void loadNextInQueue(){
-			string queue = app.GetLastSelectedQueueName ();
-			MenuItem item = app.GetLastSelectedMenu ();
+			string queue = ApplicationShared.Current.GetLastSelectedQueueName ();
+			MenuItem item = ApplicationShared.Current.GetLastSelectedMenu ();
 			Assignment assignment = new Assignment ();
 			if (queue == "Postings") {
 				List<Posting> p = new List<Posting> ();
@@ -467,7 +531,7 @@ namespace ServicelinkASAP.Android
 			ShowAssignmentDetail (assignment);
 		}
 
-
+	
 		#endregion
 	}
 

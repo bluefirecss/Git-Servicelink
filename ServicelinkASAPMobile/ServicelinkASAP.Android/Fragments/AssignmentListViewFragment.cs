@@ -38,7 +38,7 @@ namespace ServicelinkASAP.Android
         public event Action RefreshList = delegate { };
         string queue = "";
         MenuItem mItem = new MenuItem();
-        ApplicationShared app;
+        //ApplicationShared app;
         public AssignmentListViewFragment()
         {
         }
@@ -58,7 +58,7 @@ namespace ServicelinkASAP.Android
 			base.OnCreate (savedInstanceState);
             RetainInstance = true;
             SetHasOptionsMenu(true);
-            app = (ApplicationShared)Application.Context;
+           
             // declare localManger to attach activity to fragment
 			//localManager = new LocalActivityManager (Activity, true);
             //localManager.DispatchCreate (savedInstanceState);
@@ -95,7 +95,7 @@ namespace ServicelinkASAP.Android
 
             btnRefresh.Click += (object sender, EventArgs e) =>
             {
-                app.SetSyncStatus(true);
+				ApplicationShared.Current.SetSyncStatus(true);
                 SyncData(view);
             };
 
@@ -243,12 +243,18 @@ namespace ServicelinkASAP.Android
            
         }
 
+		public void StartUploadData(){
+			ApplicationShared.Current.SyncServiceConnected += (object IntentSender, ServiceConnectedEventArgs args) => {
+				((AssignmentListAdapter)ListAdapter).NotifyDataSetChanged();
+			};
+		}
+
 		public override void OnResume ()
 		{
 			base.OnResume ();
             currentTask = null;
              _cancellationTokenSource = new CancellationTokenSource();
-            if (app.ShouldSyncApplicationDate())
+			if (ApplicationShared.Current.ShouldSyncApplicationDate())
             {
                 if (this.View != null)
                 {

@@ -2945,28 +2945,52 @@ namespace ServicelinkASAP.Android
 			public const int action_menu = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int custom_progressBar = 2130837505;
+			public const int camera_s = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int ic_action_new = 2130837506;
+			public const int Camera_XL = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int ic_action_refresh = 2130837507;
+			public const int clear_s = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int Icon = 2130837508;
+			public const int clear_XL = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int indicator = 2130837509;
+			public const int custom_progressBar = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int MenuButton = 2130837510;
+			public const int exception_s = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int refresh_15 = 2130837511;
+			public const int exception_XL = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int refresh_30 = 2130837512;
+			public const int ic_action_new = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int ic_action_refresh = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int Icon = 2130837514;
+			
+			// aapt resource value: 0x7f02000b
+			public const int indicator = 2130837515;
+			
+			// aapt resource value: 0x7f02000c
+			public const int MenuButton = 2130837516;
+			
+			// aapt resource value: 0x7f02000d
+			public const int refresh_15 = 2130837517;
+			
+			// aapt resource value: 0x7f02000e
+			public const int refresh_30 = 2130837518;
+			
+			// aapt resource value: 0x7f02000f
+			public const int save_s = 2130837519;
+			
+			// aapt resource value: 0x7f020010
+			public const int save_XL = 2130837520;
 			
 			static Drawable()
 			{
@@ -2981,290 +3005,326 @@ namespace ServicelinkASAP.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a005e
-			public const int Clear = 2131361886;
+			// aapt resource value: 0x7f0a006a
+			public const int Clear = 2131361898;
 			
-			// aapt resource value: 0x7f0a0019
-			public const int ContentView = 2131361817;
+			// aapt resource value: 0x7f0a001f
+			public const int ContentView = 2131361823;
 			
-			// aapt resource value: 0x7f0a0018
-			public const int MenuButton = 2131361816;
+			// aapt resource value: 0x7f0a001e
+			public const int MenuButton = 2131361822;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int MenuListView = 2131361820;
+			// aapt resource value: 0x7f0a0022
+			public const int MenuListView = 2131361826;
 			
-			// aapt resource value: 0x7f0a000c
-			public const int MenuTitle = 2131361804;
+			// aapt resource value: 0x7f0a0011
+			public const int MenuTitle = 2131361809;
 			
-			// aapt resource value: 0x7f0a005d
-			public const int Refresh = 2131361885;
+			// aapt resource value: 0x7f0a0069
+			public const int Refresh = 2131361897;
 			
-			// aapt resource value: 0x7f0a0059
-			public const int Save = 2131361881;
+			// aapt resource value: 0x7f0a0065
+			public const int Save = 2131361893;
 			
-			// aapt resource value: 0x7f0a0016
-			public const int SliderMenu = 2131361814;
+			// aapt resource value: 0x7f0a001b
+			public const int SliderMenu = 2131361819;
+			
+			// aapt resource value: 0x7f0a0032
+			public const int btnAddress_P = 2131361842;
+			
+			// aapt resource value: 0x7f0a0025
+			public const int btnCamera = 2131361829;
 			
 			// aapt resource value: 0x7f0a0026
-			public const int btnAddress_P = 2131361830;
+			public const int btnClear = 2131361830;
 			
-			// aapt resource value: 0x7f0a000f
-			public const int btnClosePopup = 2131361807;
+			// aapt resource value: 0x7f0a0014
+			public const int btnClosePopup = 2131361812;
 			
-			// aapt resource value: 0x7f0a001a
-			public const int btnRefresh = 2131361818;
+			// aapt resource value: 0x7f0a0027
+			public const int btnException = 2131361831;
+			
+			// aapt resource value: 0x7f0a0020
+			public const int btnRefresh = 2131361824;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int btnRefresh_a = 2131361793;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int camera = 2131361880;
+			// aapt resource value: 0x7f0a0028
+			public const int btnSave = 2131361832;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int chkNTR = 2131361853;
+			// aapt resource value: 0x7f0a0064
+			public const int camera = 2131361892;
 			
-			// aapt resource value: 0x7f0a0054
-			public const int clearImgButton = 2131361876;
+			// aapt resource value: 0x7f0a0049
+			public const int chkNTR = 2131361865;
 			
-			// aapt resource value: 0x7f0a0056
-			public const int detailContainer = 2131361878;
+			// aapt resource value: 0x7f0a005e
+			public const int clearImgButton = 2131361886;
+			
+			// aapt resource value: 0x7f0a0062
+			public const int detailContainer = 2131361890;
+			
+			// aapt resource value: 0x7f0a000f
+			public const int etxtExceptionComment = 2131361807;
+			
+			// aapt resource value: 0x7f0a0068
+			public const int exception = 2131361896;
+			
+			// aapt resource value: 0x7f0a0060
+			public const int gallery1 = 2131361888;
+			
+			// aapt resource value: 0x7f0a0009
+			public const int imageButton1 = 2131361801;
 			
 			// aapt resource value: 0x7f0a000a
-			public const int etxtExceptionComment = 2131361802;
+			public const int imageButton2 = 2131361802;
 			
-			// aapt resource value: 0x7f0a005c
-			public const int exception = 2131361884;
+			// aapt resource value: 0x7f0a000b
+			public const int imageButton3 = 2131361803;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int gallery1 = 2131361875;
+			// aapt resource value: 0x7f0a000c
+			public const int imageButton4 = 2131361804;
 			
-			// aapt resource value: 0x7f0a0010
-			public const int imageView_property = 2131361808;
+			// aapt resource value: 0x7f0a0008
+			public const int imageView1 = 2131361800;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int linearLayout1 = 2131361798;
+			// aapt resource value: 0x7f0a0015
+			public const int imageView_property = 2131361813;
 			
 			// aapt resource value: 0x7f0a0007
-			public const int linearLayout2 = 2131361799;
+			public const int linearLayout1 = 2131361799;
 			
-			// aapt resource value: 0x7f0a0017
-			public const int linearLayout3 = 2131361815;
+			// aapt resource value: 0x7f0a001c
+			public const int linearLayout2 = 2131361820;
+			
+			// aapt resource value: 0x7f0a001d
+			public const int linearLayout3 = 2131361821;
+			
+			// aapt resource value: 0x7f0a0004
+			public const int listView_Assignment = 2131361796;
+			
+			// aapt resource value: 0x7f0a0018
+			public const int loginButton = 2131361816;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int mainContainer = 2131361889;
+			
+			// aapt resource value: 0x7f0a0067
+			public const int normal = 2131361895;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int postingmenu = 2131361891;
+			
+			// aapt resource value: 0x7f0a0019
+			public const int progressBar1 = 2131361817;
 			
 			// aapt resource value: 0x7f0a0003
-			public const int listView_Assignment = 2131361795;
+			public const int progressBar_sync = 2131361795;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int loginButton = 2131361811;
-			
-			// aapt resource value: 0x7f0a0055
-			public const int mainContainer = 2131361877;
-			
-			// aapt resource value: 0x7f0a005b
-			public const int normal = 2131361883;
-			
-			// aapt resource value: 0x7f0a0057
-			public const int postingmenu = 2131361879;
-			
-			// aapt resource value: 0x7f0a0014
-			public const int progressBar1 = 2131361812;
-			
-			// aapt resource value: 0x7f0a001b
-			public const int progressRing = 2131361819;
+			// aapt resource value: 0x7f0a0021
+			public const int progressRing = 2131361825;
 			
 			// aapt resource value: 0x7f0a0002
 			public const int progress_a = 2131361794;
 			
-			// aapt resource value: 0x7f0a002c
-			public const int radioGroup1 = 2131361836;
-			
-			// aapt resource value: 0x7f0a0031
-			public const int radioGroup2 = 2131361841;
-			
-			// aapt resource value: 0x7f0a0037
-			public const int radioGroup3 = 2131361847;
-			
-			// aapt resource value: 0x7f0a0044
-			public const int radioGroup4 = 2131361860;
-			
-			// aapt resource value: 0x7f0a0039
-			public const int rdbCommercial = 2131361849;
-			
-			// aapt resource value: 0x7f0a0048
-			public const int rdbContact_no = 2131361864;
-			
-			// aapt resource value: 0x7f0a0047
-			public const int rdbContact_yes = 2131361863;
-			
-			// aapt resource value: 0x7f0a002d
-			public const int rdbFront = 2131361837;
-			
-			// aapt resource value: 0x7f0a002e
-			public const int rdbGate = 2131361838;
-			
-			// aapt resource value: 0x7f0a0041
-			public const int rdbNOD = 2131361857;
-			
-			// aapt resource value: 0x7f0a0040
-			public const int rdbNOS = 2131361856;
-			
-			// aapt resource value: 0x7f0a0032
-			public const int rdbOccupied = 2131361842;
-			
-			// aapt resource value: 0x7f0a002f
-			public const int rdbOther = 2131361839;
-			
 			// aapt resource value: 0x7f0a0038
-			public const int rdbResidential = 2131361848;
+			public const int radioGroup1 = 2131361848;
 			
-			// aapt resource value: 0x7f0a003a
-			public const int rdbRural = 2131361850;
-			
-			// aapt resource value: 0x7f0a004d
-			public const int rdbSalesign_no = 2131361869;
-			
-			// aapt resource value: 0x7f0a004c
-			public const int rdbSalesign_yes = 2131361868;
-			
-			// aapt resource value: 0x7f0a0034
-			public const int rdbUnknown = 2131361844;
-			
-			// aapt resource value: 0x7f0a0033
-			public const int rdbUnoccupied = 2131361843;
-			
-			// aapt resource value: 0x7f0a0035
-			public const int rdbVacant = 2131361845;
-			
-			// aapt resource value: 0x7f0a0052
-			public const int scrollView1 = 2131361874;
-			
-			// aapt resource value: 0x7f0a0009
-			public const int spinnerReason = 2131361801;
-			
-			// aapt resource value: 0x7f0a005a
-			public const int submenu = 2131361882;
-			
-			// aapt resource value: 0x7f0a000b
-			public const int submitExceptoinButton = 2131361803;
-			
-			// aapt resource value: 0x7f0a001d
-			public const int tableLayout1 = 2131361821;
-			
-			// aapt resource value: 0x7f0a003b
-			public const int tableLayout2 = 2131361851;
-			
-			// aapt resource value: 0x7f0a0045
-			public const int tableLayout3 = 2131361861;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int tableLayout4 = 2131361866;
-			
-			// aapt resource value: 0x7f0a003e
-			public const int tableLayout5 = 2131361854;
-			
-			// aapt resource value: 0x7f0a001e
-			public const int tableRow1 = 2131361822;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int tableRow11 = 2131361858;
-			
-			// aapt resource value: 0x7f0a0046
-			public const int tableRow12 = 2131361862;
-			
-			// aapt resource value: 0x7f0a004b
-			public const int tableRow13 = 2131361867;
-			
-			// aapt resource value: 0x7f0a003f
-			public const int tableRow14 = 2131361855;
-			
-			// aapt resource value: 0x7f0a0021
-			public const int tableRow2 = 2131361825;
-			
-			// aapt resource value: 0x7f0a0023
-			public const int tableRow3 = 2131361827;
-			
-			// aapt resource value: 0x7f0a002b
-			public const int tableRow4 = 2131361835;
-			
-			// aapt resource value: 0x7f0a0030
-			public const int tableRow5 = 2131361840;
-			
-			// aapt resource value: 0x7f0a0027
-			public const int tableRow6 = 2131361831;
-			
-			// aapt resource value: 0x7f0a0029
-			public const int tableRow7 = 2131361833;
-			
-			// aapt resource value: 0x7f0a004e
-			public const int tableRow8 = 2131361870;
-			
-			// aapt resource value: 0x7f0a003c
-			public const int tableRow9 = 2131361852;
-			
-			// aapt resource value: 0x7f0a0015
-			public const int textLoginError = 2131361813;
-			
-			// aapt resource value: 0x7f0a0011
-			public const int textUserName = 2131361809;
-			
-			// aapt resource value: 0x7f0a0008
-			public const int textView1 = 2131361800;
-			
-			// aapt resource value: 0x7f0a001f
-			public const int textView10 = 2131361823;
-			
-			// aapt resource value: 0x7f0a0028
-			public const int textView16 = 2131361832;
-			
-			// aapt resource value: 0x7f0a002a
-			public const int textView17 = 2131361834;
-			
-			// aapt resource value: 0x7f0a0036
-			public const int textView20 = 2131361846;
+			// aapt resource value: 0x7f0a003d
+			public const int radioGroup2 = 2131361853;
 			
 			// aapt resource value: 0x7f0a0043
-			public const int textView22 = 2131361859;
+			public const int radioGroup3 = 2131361859;
 			
-			// aapt resource value: 0x7f0a0024
-			public const int txtAPN_P = 2131361828;
+			// aapt resource value: 0x7f0a0050
+			public const int radioGroup4 = 2131361872;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int rdbCommercial = 2131361861;
+			
+			// aapt resource value: 0x7f0a0054
+			public const int rdbContact_no = 2131361876;
+			
+			// aapt resource value: 0x7f0a0053
+			public const int rdbContact_yes = 2131361875;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int rdbFront = 2131361849;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int rdbGate = 2131361850;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int rdbNOD = 2131361869;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int rdbNOS = 2131361868;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int rdbOccupied = 2131361854;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int rdbOther = 2131361851;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int rdbResidential = 2131361860;
+			
+			// aapt resource value: 0x7f0a0046
+			public const int rdbRural = 2131361862;
+			
+			// aapt resource value: 0x7f0a0059
+			public const int rdbSalesign_no = 2131361881;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int rdbSalesign_yes = 2131361880;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int rdbUnknown = 2131361856;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int rdbUnoccupied = 2131361855;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int rdbVacant = 2131361857;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int scrollView1 = 2131361887;
+			
+			// aapt resource value: 0x7f0a000e
+			public const int spinnerReason = 2131361806;
+			
+			// aapt resource value: 0x7f0a0066
+			public const int submenu = 2131361894;
+			
+			// aapt resource value: 0x7f0a0010
+			public const int submitExceptoinButton = 2131361808;
+			
+			// aapt resource value: 0x7f0a0029
+			public const int tableLayout1 = 2131361833;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int tableLayout2 = 2131361863;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int txtComment = 2131361873;
+			public const int tableLayout3 = 2131361873;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int txtContact = 2131361865;
+			// aapt resource value: 0x7f0a0056
+			public const int tableLayout4 = 2131361878;
 			
-			// aapt resource value: 0x7f0a0005
-			public const int txtDetail = 2131361797;
+			// aapt resource value: 0x7f0a004a
+			public const int tableLayout5 = 2131361866;
+			
+			// aapt resource value: 0x7f0a0023
+			public const int tableLayout6 = 2131361827;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int tableRow1 = 2131361834;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int tableRow11 = 2131361870;
+			
+			// aapt resource value: 0x7f0a0052
+			public const int tableRow12 = 2131361874;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int tableRow13 = 2131361879;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int tableRow14 = 2131361867;
+			
+			// aapt resource value: 0x7f0a0024
+			public const int tableRow15 = 2131361828;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int tableRow2 = 2131361837;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int tableRow3 = 2131361839;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int tableRow4 = 2131361847;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int tableRow5 = 2131361852;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int tableRow6 = 2131361843;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int tableRow7 = 2131361845;
+			
+			// aapt resource value: 0x7f0a005a
+			public const int tableRow8 = 2131361882;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int tableRow9 = 2131361864;
+			
+			// aapt resource value: 0x7f0a001a
+			public const int textLoginError = 2131361818;
+			
+			// aapt resource value: 0x7f0a0016
+			public const int textUserName = 2131361814;
+			
+			// aapt resource value: 0x7f0a000d
+			public const int textView1 = 2131361805;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int textView10 = 2131361835;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int textView16 = 2131361844;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int textView17 = 2131361846;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int textView20 = 2131361858;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int textView22 = 2131361871;
+			
+			// aapt resource value: 0x7f0a0030
+			public const int txtAPN_P = 2131361840;
+			
+			// aapt resource value: 0x7f0a005d
+			public const int txtComment = 2131361885;
+			
+			// aapt resource value: 0x7f0a0055
+			public const int txtContact = 2131361877;
+			
+			// aapt resource value: 0x7f0a0006
+			public const int txtDetail = 2131361798;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int txtHeader = 2131361792;
 			
-			// aapt resource value: 0x7f0a000e
-			public const int txtListItemDetail = 2131361806;
+			// aapt resource value: 0x7f0a0013
+			public const int txtListItemDetail = 2131361811;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int txtNumPostings = 2131361872;
+			// aapt resource value: 0x7f0a005c
+			public const int txtNumPostings = 2131361884;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int txtOrderID_P = 2131361824;
+			// aapt resource value: 0x7f0a002c
+			public const int txtOrderID_P = 2131361836;
+			
+			// aapt resource value: 0x7f0a0017
+			public const int txtPassword = 2131361815;
+			
+			// aapt resource value: 0x7f0a0031
+			public const int txtPostOn = 2131361841;
+			
+			// aapt resource value: 0x7f0a005b
+			public const int txtSaleBy = 2131361883;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int txtTSNum_P = 2131361838;
+			
+			// aapt resource value: 0x7f0a0005
+			public const int txtTitle = 2131361797;
 			
 			// aapt resource value: 0x7f0a0012
-			public const int txtPassword = 2131361810;
-			
-			// aapt resource value: 0x7f0a0025
-			public const int txtPostOn = 2131361829;
-			
-			// aapt resource value: 0x7f0a004f
-			public const int txtSaleBy = 2131361871;
-			
-			// aapt resource value: 0x7f0a0022
-			public const int txtTSNum_P = 2131361826;
-			
-			// aapt resource value: 0x7f0a0004
-			public const int txtTitle = 2131361796;
-			
-			// aapt resource value: 0x7f0a000d
-			public const int view1 = 2131361805;
+			public const int view1 = 2131361810;
 			
 			static Id()
 			{
@@ -3410,6 +3470,15 @@ namespace ServicelinkASAP.Android
 			
 			// aapt resource value: 0x7f08001f
 			public const int loginText_XLarge = 2131230751;
+			
+			// aapt resource value: 0x7f080021
+			public const int menuImgButton_Large = 2131230753;
+			
+			// aapt resource value: 0x7f080022
+			public const int menuImgButton_XLarge = 2131230754;
+			
+			// aapt resource value: 0x7f080020
+			public const int menuImgButton_normal = 2131230752;
 			
 			// aapt resource value: 0x7f080012
 			public const int radioButtonSmall_Large = 2131230738;

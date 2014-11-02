@@ -7,12 +7,48 @@
     android:minHeight="25px"
     android:padding="5dp"
     android:scrollbars="vertical">
+    <TableLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout6">
+        <TableRow
+            android:id="@+id/tableRow15">
+            <ImageButton
+                android:src="@drawable/Camera_XL"
+                android:layout_column="0"
+                android:id="@+id/btnCamera"
+                style="@style/menuImgButton_XLarge"
+                android:layout_weight="1" />
+            <ImageButton
+                android:src="@drawable/clear_XL"
+                android:layout_column="1"
+                android:id="@+id/btnClear"
+                style="@style/menuImgButton_XLarge"
+                android:layout_weight="1" />
+            <ImageButton
+                android:src="@drawable/exception_XL"
+                android:layout_column="2"
+                android:id="@+id/btnException"
+                style="@style/menuImgButton_XLarge"
+                android:layout_weight="1"
+                android:adjustViewBounds="false" />
+            <ImageButton
+                android:src="@drawable/save_XL"
+                android:layout_column="3"
+                android:id="@+id/btnSave"
+                style="@style/menuImgButton_XLarge"
+                android:layout_weight="1" />
+        </TableRow>
+    </TableLayout>
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:id="@+id/linearLayout1">
         <TableLayout
             android:minWidth="25px"
@@ -103,12 +139,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/tableLayout1">
             <TableRow
-                android:id="@+id/tableRow1">
+                android:id="@+id/tableRow1"
+                android:layout_weight="1">
                 <TableRow
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="0"
-                    android:id="@+id/tableRow6">
+                    android:id="@+id/tableRow6"
+                    android:layout_weight="1">
                     <TextView
                         android:text="Post Location"
                         android:id="@+id/textView16"
@@ -118,7 +156,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="1"
-                    android:id="@+id/tableRow7">
+                    android:id="@+id/tableRow7"
+                    android:layout_weight="1">
                     <TextView
                         android:text="Occupancy"
                         android:id="@+id/textView17"
@@ -126,12 +165,14 @@
                 </TableRow>
             </TableRow>
             <TableRow
-                android:id="@+id/tableRow2">
+                android:id="@+id/tableRow2"
+                android:layout_weight="1">
                 <TableRow
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="0"
-                    android:id="@+id/tableRow4">
+                    android:id="@+id/tableRow4"
+                    android:layout_weight="1">
                     <RadioGroup
                         android:minWidth="25px"
                         android:minHeight="25px"
@@ -158,7 +199,8 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="1"
-                    android:id="@+id/tableRow5">
+                    android:id="@+id/tableRow5"
+                    android:layout_weight="1">
                     <RadioGroup
                         android:minWidth="25px"
                         android:minHeight="25px"
@@ -187,27 +229,32 @@
                 </TableRow>
             </TableRow>
             <TableRow
-                android:id="@+id/tableRow3">
+                android:id="@+id/tableRow3"
+                android:layout_weight="1">
                 <TextView
                     android:text="Property Type"
                     android:layout_column="0"
                     android:id="@+id/textView20"
                     style="@style/tableHeaderLeft_XLarge"
-                    android:layout_width="130dp" />
+                    android:layout_width="130dp"
+                    android:layout_weight="1" />
                 <TextView
                     android:text="Miscellaneous"
                     android:layout_column="1"
                     android:id="@+id/textView20"
                     style="@style/tableHeaderRight_XLarge"
-                    android:layout_width="170dp" />
+                    android:layout_width="170dp"
+                    android:layout_weight="1" />
             </TableRow>
             <TableRow
-                android:id="@+id/tableRow3">
+                android:id="@+id/tableRow3"
+                android:layout_weight="1">
                 <RadioGroup
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="0"
-                    android:id="@+id/radioGroup3">
+                    android:id="@+id/radioGroup3"
+                    android:layout_weight="1">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:text="Residential"
@@ -228,9 +275,11 @@
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_column="1"
-                    android:id="@+id/tableLayout2">
+                    android:id="@+id/tableLayout2"
+                    android:layout_weight="1">
                     <TableRow
-                        android:id="@+id/tableRow9">
+                        android:id="@+id/tableRow9"
+                        android:layout_weight="1">
                         <CheckBox
                             android:text="NTR"
                             android:layout_column="0"
@@ -260,7 +309,8 @@
                         </TableLayout>
                     </TableRow>
                     <TableRow
-                        android:id="@+id/tableRow11">
+                        android:id="@+id/tableRow11"
+                        android:layout_weight="1">
                         <TextView
                             android:text="Occupant Contact:"
                             android:layout_column="0"
@@ -352,10 +402,12 @@
                     android:text="For Sale By:"
                     android:layout_column="0"
                     android:id="@+id/textView20"
-                    style="@style/tblColLeft_XLarge" />
+                    style="@style/tblColLeft_XLarge"
+                    android:layout_weight="0" />
                 <EditText
                     android:id="@+id/txtSaleBy"
-                    style="@style/editText_1_XLarge" />
+                    style="@style/editText_1_XLarge"
+                    android:layout_weight="10" />
             </TableRow>
             <TableRow
                 android:id="@+id/tableRow8">
@@ -394,6 +446,13 @@
             android:layout_marginRight="0dp"
             android:layout_marginBottom="6dp"
             android:layout_marginTop="7dp" />
+        <Button
+            android:id="@+id/clearImgButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete All Images"
+            android:layout_marginBottom="20dp"
+            android:textSize="25dp" />
         <ScrollView
             android:minWidth="25px"
             android:minHeight="25px"

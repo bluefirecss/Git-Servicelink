@@ -33,7 +33,7 @@ namespace ServicelinkASAP.Android
 		TextView errorLogin;
 		User user = new User ();
 		AccountDataAccess ada = new AccountDataAccess();
-        ApplicationShared app;
+        //ApplicationShared app;
 		public LoginFragment ()
 		{
 		}
@@ -63,7 +63,7 @@ namespace ServicelinkASAP.Android
 		{
 			base.OnCreate (savedInstanceState);
 			RetainInstance = true;
-            app = (ApplicationShared)Application.Context;   
+           
 			// Create your fragment here
 		}
 			
@@ -133,7 +133,7 @@ namespace ServicelinkASAP.Android
 
 		private void Login ()
 		{
-            if (app.GetNetworkActive() == false)
+			if (ApplicationShared.Current.GetNetworkActive() == false)
             {
                 Toast.MakeText(mContext, "No Network Connection", ToastLength.Long).Show();
                 return;

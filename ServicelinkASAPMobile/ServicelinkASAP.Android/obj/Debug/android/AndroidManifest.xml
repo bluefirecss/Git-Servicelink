@@ -22,6 +22,7 @@
     </receiver>
     <activity android:label="AssignmentListViewActivity" android:name="servicelinkasap.android.AssignmentListViewActivity" />
     <activity android:label="CameraActivity" android:name="servicelinkasap.android.CameraActivity" />
+    <service android:name="servicelinkasapmobile.SyncService" />
     <activity android:name="xamarin.media.MediaPickerActivity" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="servicelinkasap.android.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
@@ -33,5 +34,7 @@
   </application>
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

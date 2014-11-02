@@ -18,9 +18,9 @@ namespace ServicelinkASAP.Android
 	public class ImageAdapter:BaseAdapter
 	{
 		Context context;
-		List<Photos> photos;
+		List<Photo> photos;
 
-		public ImageAdapter (Context c, List<Photos> photos)
+		public ImageAdapter (Context c, List<Photo> photos)
 		{
 			context = c;
 			this.photos = photos;

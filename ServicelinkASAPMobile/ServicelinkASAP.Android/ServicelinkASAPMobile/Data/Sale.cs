@@ -71,7 +71,7 @@ namespace ServicelinkASAPMobile.Data
 
 		public float Longitude { get; set; }
 
-		public Photos[] Photos { get; set;}
+		public Photo[] Photos { get; set;}
 
 
 		#region UI properties

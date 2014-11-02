@@ -16,8 +16,8 @@ namespace ServicelinkASAPMobile.Data
         public string OrderID { get; set; }
         public string FileName { get; set; }
         public string DateCreated { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public double Latitude { get; set; }
+		public double Longitude { get; set; }
 
     }
 }

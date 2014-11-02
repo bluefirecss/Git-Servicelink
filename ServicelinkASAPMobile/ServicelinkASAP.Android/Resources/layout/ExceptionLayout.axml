@@ -14,7 +14,7 @@
         android:id="@+id/linearLayout1"
         android:padding="5dp">
         <TextView
-            android:text="Reasons:"
+            android:text="Exception Catalog:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:prompt="@string/Reasons"
             android:layout_marginTop="10dp" />
         <TextView
-            android:text="Comment:"
+            android:text="Reason:"
             android:layout_marginTop="20dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"

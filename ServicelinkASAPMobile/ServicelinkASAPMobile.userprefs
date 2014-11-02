@@ -1,15 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ServicelinkASAP.Android/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ServicelinkASAP.Android/Fragments/ExceptionFragment.cs">
     <Files>
-      <File FileName="ServicelinkASAP.Android/Resources/values/styles.xml" Line="1" Column="1" />
-      <File FileName="ServicelinkASAP.Android/MainActivity.cs" Line="14" Column="14" />
-      <File FileName="ServicelinkASAP.Android/Fragments/PostingDetailFragment.cs" Line="1" Column="1" />
+      <File FileName="ServicelinkASAP.Android/Fragments/ExceptionFragment.cs" Line="3" Column="3" />
+      <File FileName="ServicelinkASAP.Android/Fragments/PostingDetailFragment.cs" Line="30" Column="30" />
+      <File FileName="ServicelinkASAP.Android/MainActivity.cs" Line="63" Column="63" />
+      <File FileName="ServicelinkASAP.Android/Activity/ExpandableListViewActivity.cs" Line="33" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ServicelinkASAP.Android MonoForAntroid.PreferredDevice="7&quot; WSVGA (Tablet)" />
+  <MonoDevelop.Ide.ItemProperties.ServicelinkASAP.Android MonoForAntroid.PreferredDevice="5.1&quot; WVGA" />
 </Properties>

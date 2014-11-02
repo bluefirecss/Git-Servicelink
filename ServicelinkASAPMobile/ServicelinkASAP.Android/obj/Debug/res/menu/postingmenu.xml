@@ -1,1 +1,27 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/postingmenu" android:background="@color/custom_green_blue"><item android:id="@+id/camera" android:icon="@drawable/ic_action_new" android:title="Camera"></item><item android:id="@+id/Save" android:title="Save"><menu android:id="@+id/submenu"><item android:id="@+id/normal" android:title="Save" /><item android:id="@+id/exception" android:title="Exception" /></menu></item><item android:id="@+id/Refresh" android:icon="@drawable/ic_action_refresh" android:title="Refresh"></item><item android:id="@+id/Clear" android:title="Clear"></item></menu>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/postingmenu"
+android:background="@color/custom_green_blue">
+	<item android:id="@+id/camera"
+				android:icon="@drawable/ic_action_new"
+				android:title="Camera">
+	</item>
+	<item android:id="@+id/Save"
+				android:title="Save">
+				<menu android:id="@+id/submenu">
+					<item android:id="@+id/normal"
+						  android:title="Save"/>
+					<item android:id="@+id/exception"
+								android:title="Exception"/>
+				</menu>
+	</item>
+    <item android:id="@+id/Refresh"
+				android:icon="@drawable/ic_action_refresh"
+				android:title="Refresh">
+	</item>
+	<item android:id="@+id/Clear"
+				
+				android:title="Clear">
+	</item>
+</menu>
+

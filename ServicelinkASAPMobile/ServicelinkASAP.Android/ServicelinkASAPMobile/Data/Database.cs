@@ -26,7 +26,7 @@ namespace ServicelinkASAPMobile.Data
 		private static readonly Type [] tableTypes = new Type []
 		{
 			typeof(Posting),
-			typeof(Photos),
+			typeof(Photo),
 			typeof(Document),
 			typeof(User),
 			typeof(Signature),

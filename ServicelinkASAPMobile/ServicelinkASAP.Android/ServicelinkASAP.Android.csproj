@@ -52,12 +52,13 @@
     <Reference Include="SignaturePad.Android">
       <HintPath>..\Components\signature-pad-1.3.3\lib\android\SignaturePad.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="Mono.Android.Support.v4" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity\LoginActivity.cs">
@@ -77,11 +78,6 @@
     <Compile Include="ServicelinkASAPMobile\Data\Signature.cs" />
     <Compile Include="ServicelinkASAPMobile\Data\SyncResult.cs" />
     <Compile Include="ServicelinkASAPMobile\Data\User.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\Http.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\IAccountService.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\ILoginService.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\IPostingService.cs" />
-    <Compile Include="ServicelinkASAPMobile\Utilities\ApplicationShared.cs" />
     <Compile Include="ServicelinkASAPMobile\Utilities\DataExtensions.cs" />
     <Compile Include="ServicelinkASAPMobile\Utilities\ErrorHandling.cs" />
     <Compile Include="ServicelinkASAPMobile\Utilities\ServiceContainer.cs" />
@@ -89,12 +85,8 @@
     <Compile Include="ServicelinkASAPMobile\ViewModels\AuthenticationHeader.cs" />
     <Compile Include="ServicelinkASAPMobile\ViewModels\UserModel.cs" />
     <Compile Include="ServicelinkASAPMobile\ViewModels\WebServiceClient.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\AccountDataAccess.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\LoginWebService.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\PostingDataAccess.cs" />
     <Compile Include="Fragments\SliderMenu.cs" />
     <Compile Include="Fragments\LoginFragment.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\ProjConfiguration.cs" />
     <Compile Include="Services\AssignmentService.cs" />
     <Compile Include="Activity\ExpandableListViewActivity.cs" />
     <Compile Include="Adapter\ExpandableListViewAdapter.cs" />
@@ -110,8 +102,22 @@
     <Compile Include="ServicelinkASAPMobile\Utilities\BitmapHelper.cs" />
     <Compile Include="Fragments\SplitViewFragment.cs" />
     <Compile Include="Fragments\ExceptionFragment.cs" />
-    <Compile Include="ServicelinkASAPMobile\Service\PhotoDataAccess.cs" />
     <Compile Include="ServicelinkASAPMobile\Data\Photo.cs" />
+    <Compile Include="ServicelinkASAPMobile\Utilities\ValidationHandler.cs" />
+    <Compile Include="Services\SyncService.cs" />
+    <Compile Include="Services\ServiceConnection.cs" />
+    <Compile Include="Services\ServiceBinder.cs" />
+    <Compile Include="Services\ApplicationShared.cs" />
+    <Compile Include="Services\ServiceConnectedEventArgs.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\Http.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\IAccountService.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\ILoginService.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\IPostingService.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\AccountDataAccess.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\LoginWebService.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\PostingDataAccess.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\ProjConfiguration.cs" />
+    <Compile Include="ServicelinkASAPMobile\AppService\PhotoDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -132,9 +138,6 @@
     <AndroidResource Include="Resources\layout\ExpandableListItem1.axml" />
     <AndroidResource Include="Resources\layout\ExpandableListItem2.axml" />
     <AndroidResource Include="Resources\layout\CustomListItem.axml" />
-    <AndroidResource Include="Resources\layout\PostingDetailLayout.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\SalesDetailLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -153,7 +156,6 @@
     <None Include="Resources\drawable\drawable-hdpi\ic_action_new.png" />
     <None Include="Resources\drawable\drawable-hdpi\ic_action_overflow.png" />
     <None Include="Resources\drawable\drawable-hdpi\ic_action_refresh.png" />
-    <None Include="Resources\drawable\drawable-hdpi\qualtechaction.png" />
     <None Include="Resources\drawable\drawable-ldpi\.DS_Store" />
     <None Include="Resources\drawable\drawable-ldpi\ic_action_call.png" />
     <None Include="Resources\drawable\drawable-ldpi\ic_action_new.png" />
@@ -194,6 +196,23 @@
     <AndroidResource Include="Resources\layout-xlarge\Login.axml" />
     <AndroidResource Include="Resources\layout-large\Login.axml" />
     <AndroidResource Include="Resources\layout\ExceptionLayout.axml" />
+    <AndroidResource Include="Fragments\PostingDetailLayout.axml">
+      <DependentUpon>AccountFragment.cs</DependentUpon>
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\camera_s.png" />
+    <AndroidResource Include="Resources\layout\PostingDetailLayout.axml" />
+    <AndroidResource Include="Resources\layout\exception_s.png">
+      <DependentUpon>PostingDetailLayout.axml</DependentUpon>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\exception_s.png" />
+    <AndroidResource Include="Resources\drawable\clear_s.png" />
+    <AndroidResource Include="Resources\drawable\save_s.png" />
+    <AndroidResource Include="Resources\drawable\Camera_XL.png" />
+    <AndroidResource Include="Resources\drawable\clear_XL.png" />
+    <AndroidResource Include="Resources\drawable\exception_XL.png" />
+    <AndroidResource Include="Resources\drawable\save_XL.png" />
+    <AndroidResource Include="Resources\layout\SignatureLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
